@@ -4,6 +4,7 @@
 // const fs = require("fs");
 // const http = require("http");
 const express = require("express");
+const Joi = require("@hapi/joi");
 
 // const pathObj = path.parse(__filename);
 // const totalMemory = os.totalmem();
@@ -18,7 +19,7 @@ const express = require("express");
 //
 // console.log(`Total Mem:${totalMemory}, \nFree Mem: ${freeMemory}`);
 //
-// console.log(files);
+// console.log(files);ª
 
 // const logger = new Logger();
 
@@ -50,6 +51,7 @@ const express = require("express");
 // server.listen(3002);
 
 const app = express();
+app.use(express.json());
 
 app.get("/", (req, res) => {
   res.send("hello world");
@@ -70,6 +72,27 @@ app.get("/api/courses/:id", (req, res) => {
   if (!course)
     res.status(404).send("The course with the given ID was not found");
   else res.send(course);
+});
+
+app.post("/api/courses", (req, res) => {
+  let schema = {
+    name: Joi.string()
+      .min(3)
+      .required()
+  };
+
+  const result = Joi.validate(req.body, schema);
+
+  if (!req.body.name || req.body.name.length < 3) {
+    res.status(400).send(result.error);
+    return;
+  }
+  const course = {
+    id: courses.length + 1,
+    name: req.body.name
+  };
+  courses.push(course);
+  res.send(course);
 });
 
 //PORT
