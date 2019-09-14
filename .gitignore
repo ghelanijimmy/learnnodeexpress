@@ -90,3 +90,5 @@ typings/
 .dynamodb/
 
 app/
+server/.dockerignore
+/server/package-lock.json
