@@ -16,7 +16,7 @@ const CreateExercise = props => {
 
   /**
    *Sets new username on change
-   * @param {event} e HTML Event Object
+   * @param {EventListenerOrEventListenerObject} e HTML Event Object
    */
   const onChangeUsername = e => {
     setUsername(e.target.value);
@@ -24,7 +24,7 @@ const CreateExercise = props => {
 
   /**
    *Sets new description on change
-   * @param {event} e HTML Event Object
+   * @param {EventListenerOrEventListenerObject} e HTML Event Object
    */
   const onChangeDescription = e => {
     setDescription(e.target.value);
@@ -32,7 +32,7 @@ const CreateExercise = props => {
 
   /**
    *Sets new duration on change
-   * @param {event} e HTML Event Object
+   * @param {EventListenerOrEventListenerObject} e HTML Event Object
    */
   const onChangeDuration = e => {
     setDuration(e.target.value);
@@ -46,6 +46,10 @@ const CreateExercise = props => {
     setDate(date);
   };
 
+  /**
+   * Submits for to add new exercise log
+   * @param {EventListenerOrEventListenerObject} e HTML Event Object
+   */
   const onSubmit = e => {
     e.preventDefault();
 
