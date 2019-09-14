@@ -20,6 +20,16 @@ const CreateUser = props => {
 
     console.log(user);
 
+    fetch("http://localhost:5000/users/add", {
+      method: "post",
+      headers: {
+        "Content-type": "application/json"
+      },
+      body: JSON.stringify({ username })
+    })
+      .then(res => res.json())
+      .then(data => console.log(data));
+
     setUsername("");
   };
 

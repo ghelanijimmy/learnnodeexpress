@@ -10,8 +10,17 @@ const CreateExercise = props => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    setUsers(["test user"]);
-    setUsername("test user");
+    fetch("http://localhost:5000/users")
+      .then(res => {
+        console.log(res);
+        if (res.ok) return res.json();
+        else throw res;
+      })
+      .then(data => {
+        setUsers(data.map(user => user.username));
+        setUsername(data[0].username);
+        console.log(data);
+      });
   }, []);
 
   /**
@@ -62,7 +71,18 @@ const CreateExercise = props => {
 
     console.log(exercise);
 
-    props.history.push({ pathname: "/" });
+    fetch("http://localhost:5000/exercises/add", {
+      method: "post",
+      headers: {
+        "Content-type": "application/json"
+      },
+      body: JSON.stringify(exercise)
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        props.history.push({ pathname: "/" });
+      });
   };
 
   return (
