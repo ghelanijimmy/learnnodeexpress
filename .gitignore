@@ -92,3 +92,4 @@ typings/
 app/
 server/.dockerignore
 /server/package-lock.json
+!/app/.dockerignore
