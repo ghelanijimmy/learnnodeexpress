@@ -1,23 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-
-const Exercise = props => {
-  const { username, description, duration, date, _id } = props.exercise;
-  return (
-    <tr>
-      <td>{username}</td>
-      <td>{description}</td>
-      <td>{duration}</td>
-      <td>{date}</td>
-      <td>
-        <Link to={`/edit/${_id}`}>Edit</Link> |{" "}
-        <a href="#" onClick={() => props.deleteExercise(_id)}>
-          Delete
-        </a>
-      </td>
-    </tr>
-  );
-};
+import Exercise from "./exercise";
 
 const ExercisesList = props => {
   const [exercises, setExercises] = useState([]);
