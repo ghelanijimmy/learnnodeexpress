@@ -29,9 +29,10 @@
     <option gcl="false" />
     <option globalstrict="false" />
     <option immed="false" />
+    <option indent="4" />
     <option iterator="false" />
     <option jasmine="false" />
-    <option jquery="true" />
+    <option jquery="false" />
     <option lastsemic="false" />
     <option latedef="false" />
     <option laxbreak="false" />
@@ -68,7 +69,7 @@
     <option shelljs="false" />
     <option singleGroups="false" />
     <option smarttabs="false" />
-    <option strict="true" />
+    <option strict="false" />
     <option sub="false" />
     <option supernew="false" />
     <option trailing="false" />
